@@ -22,7 +22,7 @@ export default class Temas extends Component{
       constructor () {
           super ();
           this.state = {
-              temas: []
+              temas: [],
           }
       }
       
@@ -37,22 +37,25 @@ export default class Temas extends Component{
         .catch(erro => console.warn(erro));
     }
 
-
     render (){
         return(
-            <FlatList
-            contentContainerStyle={styles.lista}
-            data={this.state.temas}
-            keyExtractor={item => item.IdTema}
-            renderItem={({item})=> (
-                <View style={styles.tabela}>       
-                    <Text style={styles.titulo}>{item.nome}</Text> 
+            <View>
+                <View >
+                    <Text style={styles.la}>Temas</Text>
                 </View>
-             )}
-            />               
+                <FlatList
+                contentContainerStyle={styles.lista}
+                data={this.state.temas}
+                keyExtractor={item => item.IdTema}
+                renderItem={({item})=> (
+                    <View style={styles.tabela}>       
+                        <Text style={styles.titulo}>{item.nome}</Text> 
+                    </View>
+                )}
+                />               
+             </View>
         );
-    }
-    
+    } 
 }
 
 const styles = StyleSheet.create({
@@ -61,10 +64,14 @@ const styles = StyleSheet.create({
         height: 25, 
         tintColor: 'white'
     },
-    titulo: {
-        color: 'white',
+    la: {
         textAlign: "center",
-        backgroundColor: '#9900e6',
+        fontSize: 21,
+    },  
+    titulo: {
+        color: 'black',
+        textAlign: "center",
+        backgroundColor: '#b3e6ff',
         fontSize: 17,
         padding: 5
     },
