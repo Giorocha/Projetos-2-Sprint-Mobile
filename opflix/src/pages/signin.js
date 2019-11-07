@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 
 import {
     View,
@@ -7,9 +7,10 @@ import {
     TouchableOpacity,
     AsyncStorage,
     StyleSheet,
+    Image,
 } from 'react-native'
 
-export default class SignIn extends Component{
+export default class SignIn extends Component {
 
     static navigationOptions = {
         header: null,
@@ -35,9 +36,9 @@ export default class SignIn extends Component{
                 senha: this.state.senha
             }),
         })
-        .then(resposta => resposta.json())
-        .then(data => this._irParaHome(data.token))
-        .catch(erro => console.warn(erro));
+            .then(resposta => resposta.json())
+            .then(data => this._irParaHome(data.token))
+            .catch(erro => console.warn(erro));
     }
 
     _irParaHome = async tokenAReceber => {
@@ -51,33 +52,37 @@ export default class SignIn extends Component{
         }
     }
 
-    render(){
+    render() {
         return (
             <View style={styles.tudo}>
+                <Image
+                    style={{ width: 100, height: 50, alignItems: "center"}}
+                    source={require('../assets/img/opflix.nome.png')}
+                />
                 <View>
                     <Text style={styles.login}>Login</Text>
                 </View>
                 <View style={styles.inputs}>
                     <View style={styles.input1}>
                         <TextInput
-                        style={styles.nome}
-                        placeholder="email"
-                        onChangeText={email => this.setState({email})}
-                        value={this.state.email}
+                            style={styles.nome}
+                            placeholder="email"
+                            onChangeText={email => this.setState({ email })}
+                            value={this.state.email}
                         />
                     </View>
                     <View style={styles.input2}>
                         <TextInput
-                        style={styles.senha}
-                        placeholder="senha"
-                        onChangeText={senha => this.setState({senha})}
-                        value={this.state.senha}
+                            style={styles.senha}
+                            placeholder="senha"
+                            onChangeText={senha => this.setState({ senha })}
+                            value={this.state.senha}
                         />
                     </View>
                 </View>
                 <View style={styles.botao}>
                     <TouchableOpacity onPress={this._realizarLogin}>
-                        <Text style={styles.logar}>Logar</Text>
+                        <Text style={styles.logar}>Efetuar Login</Text>
                     </TouchableOpacity>
                 </View>
             </View>
@@ -100,7 +105,6 @@ const styles = StyleSheet.create({
     },
     input1: {
         margin: 10,
-        marginTop: 40,
         width: 200,
     },
     input2: {
@@ -121,11 +125,11 @@ const styles = StyleSheet.create({
     },
     nome: {
         fontSize: 17,
-        backgroundColor:'#f2f2f2',
+        backgroundColor: '#f2f2f2',
 
     },
     senha: {
         fontSize: 17,
-        backgroundColor:'#f2f2f2',
+        backgroundColor: '#f2f2f2',
     }
 })
