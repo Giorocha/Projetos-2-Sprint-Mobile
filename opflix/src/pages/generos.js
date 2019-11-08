@@ -64,9 +64,9 @@ export default class Generos extends Component {
 
 const styles = StyleSheet.create({
     tabBarNavigatorIcon: {
-        width: 25,
-        height: 25,
-        tintColor: 'white'
+        width: 30,
+        height: 30,
+        tintColor: '#DB0909'
     },
     la1: {
         marginTop: 25,

@@ -21,15 +21,16 @@ const MainNavigation = createBottomTabNavigator({
     },
     Generos: {
       screen: GeneroScreen,
-    }
+    },
+    
   },
     {
       initialRouteName: 'Main',
       tabBarOptions: {
         showIcon: true,
         showLabel: false,
-        inactiveBackgroundColor: '#00001a',
-        activeBackgroundColor: '#00001a',
+        inactiveBackgroundColor: '#000000',
+        activeBackgroundColor: '#000000',
         style: {
           width: '100%',
           height: 50,

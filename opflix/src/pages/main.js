@@ -8,7 +8,6 @@ import {
     AsyncStorage,
 } from 'react-native';
 
-import SafeAreaView from 'react-native-safe-area-view';
 import { FlatList } from "react-native-gesture-handler";
 
 
@@ -45,13 +44,20 @@ export default class Main extends Component {
             .then(data => this.setState({ lancamentos: data }))
             .catch(erro => console.warn(erro));
     }
-
     render() {
         return (
             <View style={styles.tudo}>
                 <View>
-                    <Text style={styles.la}>Lançamentos</Text>
+                    <Image
+                        style={{ width: 80, height: 30, alignItems: "center" }}
+                        source={require('../assets/img/opflix.nome.png')}
+                    />
+                    {/* <Button
+                        title="Sair"
+                        onPress={() => this.props.navigation.navigate('signin')}
+                    /> */}
                 </View>
+                    <Text style={styles.la}>Lançamentos</Text>
                 <FlatList
                     contentContainerStyle={styles.list}
                     data={this.state.lancamentos}
@@ -59,10 +65,11 @@ export default class Main extends Component {
                     renderItem={({ item }) => (
                         <View style={styles.tabela}>
                             <Image
-                                style={{ width: 144, height: 240}}
-                                source={{uri: item.imagem}}
+                                style={{ width: 144, height: 240, marginLeft: 122, }}
+                                source={{ uri: item.imagem }}
                             />
                             <Text style={styles.titulo}>{item.titulo}</Text>
+                            <Text style={styles.sinopse}>{item.sinopse}</Text>
                         </View>
                     )}
                 />
@@ -73,9 +80,13 @@ export default class Main extends Component {
 
 const styles = StyleSheet.create({
     tabBarNavigatorIcon: {
-        width: 25,
-        height: 25,
-        tintColor: 'white'
+        width: 30,
+        height: 30,
+        tintColor: '#DB0909'
+    },
+    sinopse: {
+        textAlign: "center",
+
     },
     data: {
         color: 'white',
@@ -85,7 +96,7 @@ const styles = StyleSheet.create({
     },
     la: {
         color: 'black',
-        marginTop: 25,
+        marginTop: 10,
         textAlign: "center",
         fontSize: 21,
     },
@@ -95,6 +106,7 @@ const styles = StyleSheet.create({
         paddingRight: 10,
     },
     titulo: {
+        marginTop: 20,
         color: '#000000',
         textAlign: "center",
         backgroundColor: '#f2f2f2',

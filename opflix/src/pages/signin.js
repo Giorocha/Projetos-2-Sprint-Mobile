@@ -54,6 +54,7 @@ export default class SignIn extends Component {
 
     render() {
         return (
+        
             <View style={styles.tudo}>
                 <Image
                     style={{ width: 100, height: 50, alignItems: "center"}}
@@ -102,6 +103,7 @@ const styles = StyleSheet.create({
     },
     inputs: {
         alignItems: "center",
+        
     },
     input1: {
         margin: 10,
