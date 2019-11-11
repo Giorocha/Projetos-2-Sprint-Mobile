@@ -1,6 +1,7 @@
 import MainScreen from './pages/main.js'
 import GeneroScreen from  './pages/generos.js'
 import SigninScreen from './pages/signin.js'
+import ProfileScreen from './pages/profile.js'
 
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 
@@ -22,6 +23,9 @@ const MainNavigation = createBottomTabNavigator({
     Generos: {
       screen: GeneroScreen,
     },
+    Profile: {
+      screen: ProfileScreen,
+    }
     
   },
     {

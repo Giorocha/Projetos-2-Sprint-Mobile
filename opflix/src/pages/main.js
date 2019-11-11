@@ -3,8 +3,10 @@ import React, { Component } from 'react'
 import {
     Text,
     View,
+    Picker,
     StyleSheet,
     Image,
+    Button,
     AsyncStorage,
 } from 'react-native';
 
@@ -25,12 +27,40 @@ export default class Main extends Component {
     constructor() {
         super();
         this.state = {
-            lancamentos: []
+            lancamentos: [],
+            novaLista: [],
+            categorias: [],
+            idCategoriaNavigation: [],
+
+            valorSelecionado: null
         }
     }
 
     componentDidMount() {
         this._trazerLancamentos();
+        this._trazerCategorias();
+    }
+
+    alterarValor = (valor) => {
+        this.setState({ valorSelecionado: valor })
+        // trabalhar com outra lista
+
+        this.setState({ novaLista: this.state.lancamentos.filter(x => x.idCategoria == valor) })
+        console.warn(this.state.lancamentos.filter(x => x.idCategoria == valor))
+    }
+
+    _trazerCategorias = async () => {
+        await fetch("http://192.168.4.233:5000/api/categorias", {
+            headers: {
+                'Authorization': 'Bearer ' + await AsyncStorage.getItem('@opflix:token'),
+                'Content-Type': 'application/json',
+            }
+        })
+            .then(x => x.json())
+            .then(response => {
+                this.setState({ categorias: response })
+            })
+            .catch(erro => console.log(erro))
     }
 
     _trazerLancamentos = async () => {
@@ -49,15 +79,26 @@ export default class Main extends Component {
             <View style={styles.tudo}>
                 <View>
                     <Image
-                        style={{ width: 80, height: 30, alignItems: "center" }}
+                        style={{ width: 100, height: 50, alignItems: "center" }}
                         source={require('../assets/img/opflix.nome.png')}
                     />
-                    {/* <Button
+                    <Button
                         title="Sair"
-                        onPress={() => this.props.navigation.navigate('signin')}
-                    /> */}
+                        onPress={() => this.props.navigation.navigate("AuthStack")}
+                    />
                 </View>
-                    <Text style={styles.la}>Lançamentos</Text>
+                    <View>
+                        <Picker selectedValue={this.state.valorSelecionado} onValueChange={this.alterarValor}>
+                            <Picker.Item label="Selecione um Gênero" value="0" />
+                            {this.state.categorias.map(item => {
+                                return (
+                                    <Picker.Item label={item.nome} value={item.idCategoria} />
+                                )
+                            })}
+                        </Picker>
+                        <Text style={styles.text}>{this.state.valorSelecionado}</Text>
+                    </View>
+                <Text style={styles.la}>Lançamentos</Text>
                 <FlatList
                     contentContainerStyle={styles.list}
                     data={this.state.lancamentos}
@@ -79,6 +120,7 @@ export default class Main extends Component {
 }
 
 const styles = StyleSheet.create({
+    tudo:{height:'98%'},
     tabBarNavigatorIcon: {
         width: 30,
         height: 30,
@@ -96,7 +138,6 @@ const styles = StyleSheet.create({
     },
     la: {
         color: 'black',
-        marginTop: 10,
         textAlign: "center",
         fontSize: 21,
     },
