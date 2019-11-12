@@ -39,6 +39,7 @@ export default class Main extends Component {
     componentDidMount() {
         this._trazerLancamentos();
         this._trazerCategorias();
+
     }
 
     alterarValor = (valor) => {
@@ -74,30 +75,28 @@ export default class Main extends Component {
             .then(data => this.setState({ lancamentos: data }))
             .catch(erro => console.warn(erro));
     }
+
+
     render() {
         return (
             <View style={styles.tudo}>
-                <View>
-                    <Image
-                        style={{ width: 100, height: 50, alignItems: "center" }}
+                <View style={styles.sair}>
+                    <Image style={styles.img}
+                        style={{width: 150, height: 50, marginLeft: 131 , marginBottom: 20, marginTop: 20 }}
                         source={require('../assets/img/opflix.nome.png')}
                     />
-                    <Button
-                        title="Sair"
-                        onPress={() => this.props.navigation.navigate("AuthStack")}
-                    />
+                 
                 </View>
-                    <View>
-                        <Picker selectedValue={this.state.valorSelecionado} onValueChange={this.alterarValor}>
-                            <Picker.Item label="Selecione um Gênero" value="0" />
-                            {this.state.categorias.map(item => {
-                                return (
-                                    <Picker.Item label={item.nome} value={item.idCategoria} />
-                                )
-                            })}
-                        </Picker>
-                        <Text style={styles.text}>{this.state.valorSelecionado}</Text>
-                    </View>
+                <View>
+                    <Picker selectedValue={this.state.valorSelecionado} onValueChange={this.alterarValor}>
+                        <Picker.Item label="Selecione um Gênero" value="0" />
+                        {this.state.categorias.map(item => {
+                            return (
+                                <Picker.Item label={item.nome} value={item.idCategoria} />
+                            )
+                        })}
+                    </Picker>
+                </View>
                 <Text style={styles.la}>Lançamentos</Text>
                 <FlatList
                     contentContainerStyle={styles.list}
@@ -120,15 +119,22 @@ export default class Main extends Component {
 }
 
 const styles = StyleSheet.create({
-    tudo:{height:'98%'},
+    tudo:{
+        height: '99%'
+    },
+    ver: {
+        backgroundColor: '#DB0909',
+    },
     tabBarNavigatorIcon: {
         width: 30,
         height: 30,
         tintColor: '#DB0909'
     },
+    sair: {
+        backgroundColor: '#000'
+    },
     sinopse: {
         textAlign: "center",
-
     },
     data: {
         color: 'white',
@@ -137,9 +143,12 @@ const styles = StyleSheet.create({
         fontSize: 15,
     },
     la: {
-        color: 'black',
+        padding: 5,
+        marginTop: 2,
         textAlign: "center",
         fontSize: 21,
+        color: 'white',
+        backgroundColor: '#000'
     },
     tabela: {
         paddingTop: 20,

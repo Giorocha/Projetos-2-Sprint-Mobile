@@ -44,6 +44,12 @@ export default class Generos extends Component {
     render() {
         return (
             <View>
+                <View style={styles.imga}>
+                    <Image
+                        style={{ width: 150, height: 50, marginLeft: 131 , marginBottom: 20, marginTop: 20 }}
+                        source={require('../assets/img/opflix.nome.png')}
+                    />
+                </View>
                 <View >
                     <Text style={styles.la1}>Generos</Text>
                 </View>
@@ -53,7 +59,7 @@ export default class Generos extends Component {
                     keyExtractor={item => item.IdCategoria}
                     renderItem={({ item }) => (
                         <View style={styles.tabela}>
-                            <Text style={styles.titulo}>{item.nome}</Text>   
+                            <Text style={styles.titulo}>{item.nome}</Text>
                         </View>
                     )}
                 />
@@ -68,10 +74,16 @@ const styles = StyleSheet.create({
         height: 30,
         tintColor: '#DB0909'
     },
+    imga:{
+        backgroundColor: '#000'
+    },
     la1: {
-        marginTop: 25,
+        padding: 5,
+        marginTop: 10,
         textAlign: "center",
         fontSize: 21,
+        color: 'white',
+        backgroundColor: '#000'
     },
     tabela: {
         paddingTop: 20,

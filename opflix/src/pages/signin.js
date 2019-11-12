@@ -19,8 +19,8 @@ export default class SignIn extends Component {
     constructor() {
         super();
         this.state = {
-            email: "erik@email.com",
-            senha: "123456"
+            email: "",
+            senha: ""
         };
     }
 
@@ -52,38 +52,49 @@ export default class SignIn extends Component {
         }
     }
 
+    _irCadastro = () => {
+        this.props.navigation.navigate('CadastroScreen')
+    }
+
     render() {
         return (
-        
+
             <View style={styles.tudo}>
-                <Image
-                    style={{ width: 100, height: 50, alignItems: "center"}}
-                    source={require('../assets/img/opflix.nome.png')}
-                />
+                <View style={styles.oi}>
+                    <Image
+                        style={{ width: 150, height: 50, marginLeft: 131, marginBottom: 35, marginTop: 35 }}
+                        source={require('../assets/img/opflix.nome.png')}
+                    />
+                </View>
+
                 <View>
                     <Text style={styles.login}>Login</Text>
                 </View>
+
                 <View style={styles.inputs}>
-                    <View style={styles.input1}>
-                        <TextInput
-                            style={styles.nome}
-                            placeholder="email"
-                            onChangeText={email => this.setState({ email })}
-                            value={this.state.email}
-                        />
-                    </View>
-                    <View style={styles.input2}>
-                        <TextInput
-                            style={styles.senha}
-                            placeholder="senha"
-                            onChangeText={senha => this.setState({ senha })}
-                            value={this.state.senha}
-                        />
-                    </View>
+
+                    <TextInput
+                        style={styles.nome}
+                        placeholder="email"
+                        onChangeText={email => this.setState({ email })}
+                        value={this.state.email}
+                    />
+
+                    <TextInput
+                        style={styles.nome}
+                        placeholder="senha"
+                        onChangeText={senha => this.setState({ senha })}
+                        value={this.state.senha}
+                    />
                 </View>
-                <View style={styles.botao}>
+                
                     <TouchableOpacity onPress={this._realizarLogin}>
                         <Text style={styles.logar}>Efetuar Login</Text>
+                    </TouchableOpacity>
+
+                <View>
+                    <TouchableOpacity onPress={this._irCadastro}>
+                        <Text style={styles.cadastro}>Cadastrar-se</Text>
                     </TouchableOpacity>
                 </View>
             </View>
@@ -92,26 +103,13 @@ export default class SignIn extends Component {
 }
 
 const styles = StyleSheet.create({
-    fundo: {
-        backgroundColor: '#00004d',
-        textAlign: "center",
+
+    cadastro: {
+        fontSize: 15,
+        marginLeft: 9.5,
     },
-    login: {
-        textAlign: "center",
-        fontSize: 20,
-        margin: 30,
-    },
-    inputs: {
-        alignItems: "center",
-        
-    },
-    input1: {
-        margin: 10,
-        width: 200,
-    },
-    input2: {
-        margin: 10,
-        width: 200,
+    oi: {
+        backgroundColor: '#000'
     },
     logar: {
         margin: 10,
@@ -122,16 +120,15 @@ const styles = StyleSheet.create({
         borderWidth: 0.5,
         borderColor: "black",
     },
-    botao: {
-        alignItems: "center",
+    login: {
+        textAlign: "center",
+        fontSize: 20,
+        margin: 30,
     },
     nome: {
-        fontSize: 17,
-        backgroundColor: '#f2f2f2',
-
+        fontSize: 15,
     },
-    senha: {
-        fontSize: 17,
-        backgroundColor: '#f2f2f2',
-    }
+    inputs: {
+        alignItems: "center",
+    },
 })

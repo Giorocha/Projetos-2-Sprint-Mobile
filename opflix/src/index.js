@@ -2,6 +2,7 @@ import MainScreen from './pages/main.js'
 import GeneroScreen from  './pages/generos.js'
 import SigninScreen from './pages/signin.js'
 import ProfileScreen from './pages/profile.js'
+import CadastroScreen from './pages/cadastro.js'
 
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 
@@ -48,7 +49,8 @@ const MainNavigation = createBottomTabNavigator({
     createSwitchNavigator(
       {
         MainNavigation,
-        AuthStack
+        AuthStack,
+        CadastroScreen,
       }, {
         initialRouteName: "AuthStack"
       },
