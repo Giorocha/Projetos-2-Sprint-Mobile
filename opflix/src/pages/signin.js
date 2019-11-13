@@ -124,6 +124,7 @@ const styles = StyleSheet.create({
         textAlign: "center",
         fontSize: 20,
         margin: 30,
+        
     },
     nome: {
         fontSize: 15,

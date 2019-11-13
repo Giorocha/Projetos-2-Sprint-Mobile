@@ -50,6 +50,10 @@ export default class Cadastro extends Component {
         }
     }
 
+    _voltar = () => {
+        this.props.navigation.navigate('AuthStack')
+    }
+
     render() {
         return (
             <View>
@@ -95,6 +99,12 @@ export default class Cadastro extends Component {
                 <TouchableOpacity onPress={this._realizarCadastro}>
                     <Text style={styles.cadastro}>Cadastrar</Text>
                 </TouchableOpacity>
+
+                <View>
+                    <TouchableOpacity onPress={this._voltar}>
+                        <Text style={styles.voltar}>voltar</Text>
+                    </TouchableOpacity>
+                </View>
             </View>
         );
     }
@@ -103,6 +113,10 @@ export default class Cadastro extends Component {
 const styles = StyleSheet.create({
     tudo: {
         backgroundColor: '#000'
+    },
+    voltar: {
+        fontSize: 15,
+        marginLeft: 9.5,
     },
     cadastro: {
         margin: 10,

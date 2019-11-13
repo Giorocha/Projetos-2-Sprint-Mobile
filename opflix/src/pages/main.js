@@ -6,7 +6,6 @@ import {
     Picker,
     StyleSheet,
     Image,
-    Button,
     AsyncStorage,
 } from 'react-native';
 
@@ -44,10 +43,11 @@ export default class Main extends Component {
 
     alterarValor = (valor) => {
         this.setState({ valorSelecionado: valor })
-        // trabalhar com outra lista
+        if (valor == 0) {
+            this.setState({ novaLista: [] })
+        }
 
         this.setState({ novaLista: this.state.lancamentos.filter(x => x.idCategoria == valor) })
-        console.warn(this.state.lancamentos.filter(x => x.idCategoria == valor))
     }
 
     _trazerCategorias = async () => {
@@ -82,48 +82,72 @@ export default class Main extends Component {
             <View style={styles.tudo}>
                 <View style={styles.sair}>
                     <Image style={styles.img}
-                        style={{width: 150, height: 50, marginLeft: 131 , marginBottom: 20, marginTop: 20 }}
+                        style={{ width: 150, height: 50, marginLeft: 131, marginBottom: 20, marginTop: 20 }}
                         source={require('../assets/img/opflix.nome.png')}
                     />
-                 
+
                 </View>
                 <View>
-                    <Picker selectedValue={this.state.valorSelecionado} onValueChange={this.alterarValor}>
-                        <Picker.Item label="Selecione um Gênero" value="0" />
+                    <Text style={styles.la}>Lançamentos</Text>
+                    <Picker style={styles.picker} selectedValue={this.state.valorSelecionado} onValueChange={this.alterarValor}>
+                        <Picker.Item style={styles.picker1} label="Selecione um Gênero" value="0" />
                         {this.state.categorias.map(item => {
                             return (
                                 <Picker.Item label={item.nome} value={item.idCategoria} />
                             )
                         })}
                     </Picker>
+                    <View style={{ height: 1, backgroundColor: '#DB0909', marginBottom: 10, }}></View>
                 </View>
-                <Text style={styles.la}>Lançamentos</Text>
-                <FlatList
-                    contentContainerStyle={styles.list}
-                    data={this.state.lancamentos}
-                    keyExtractor={item => item.IdLancamento}
-                    renderItem={({ item }) => (
-                        <View style={styles.tabela}>
-                            <Image
-                                style={{ width: 144, height: 240, marginLeft: 122, }}
-                                source={{ uri: item.imagem }}
-                            />
-                            <Text style={styles.titulo}>{item.titulo}</Text>
-                            <Text style={styles.sinopse}>{item.sinopse}</Text>
-                        </View>
-                    )}
-                />
+                <View>
+                    <View>
+                        {this.state.novaLista.length > 0 ? <FlatList
+                            contentContainerStyle={styles.list}
+                            data={this.state.novaLista}
+                            keyExtractor={item => item.idLancamento}
+                            renderItem={({ item }) => (
+                                <View style={styles.tabela}>
+                                    <Image
+                                        style={{ width: 150, height: 255, marginLeft: 122, }}
+                                        source={{ uri: item.imagem }}
+                                    />
+                                    <Text style={styles.titulo}>{item.titulo}</Text>
+                                    <Text style={styles.sinopse}>{item.sinopse}</Text>
+                                </View>
+                            )}
+                        /> :
+                            <FlatList
+                                contentContainerStyle={styles.list}
+                                data={this.state.lancamentos}
+                                keyExtractor={item => item.IdLancamento}
+                                renderItem={({ item }) => (
+                                    <View style={styles.tabela}>
+                                        <Image
+                                            style={{ width: 150, height: 255, marginLeft: 122, }}
+                                            source={{ uri: item.imagem }}
+                                        />
+                                        <Text style={styles.titulo}>{item.titulo}</Text>
+                                        <Text style={styles.sinopse}>{item.sinopse}</Text>
+                                    </View>
+                                )}
+                            />}
+                    </View>
+                </View>
             </View>
         );
     }
 }
 
 const styles = StyleSheet.create({
-    tudo:{
-        height: '99%'
+    tudo: {
+        height: '68%'
     },
     ver: {
         backgroundColor: '#DB0909',
+    },
+    picker: {
+        backgroundColor: '#fff',
+
     },
     tabBarNavigatorIcon: {
         width: 30,
@@ -144,11 +168,10 @@ const styles = StyleSheet.create({
     },
     la: {
         padding: 5,
-        marginTop: 2,
         textAlign: "center",
         fontSize: 21,
         color: 'white',
-        backgroundColor: '#000'
+        backgroundColor: '#DB0909'
     },
     tabela: {
         paddingTop: 20,

@@ -79,11 +79,10 @@ const styles = StyleSheet.create({
     },
     la1: {
         padding: 5,
-        marginTop: 10,
         textAlign: "center",
         fontSize: 21,
         color: 'white',
-        backgroundColor: '#000'
+        backgroundColor: '#DB0909'
     },
     tabela: {
         paddingTop: 20,

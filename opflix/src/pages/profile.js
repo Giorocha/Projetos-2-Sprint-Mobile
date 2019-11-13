@@ -60,6 +60,10 @@ export default class profile extends Component {
                         source={require('../assets/img/opflix.nome.png')}
                     />
                 </View>
+
+                <View>
+                <Text style={styles.la1}>Perfil</Text>
+                </View>
                 
                 <View style={styles.info}>
                     <Image source={{ uri: this.state.usuario.Imagem }} style={styles.imagem} />
@@ -83,6 +87,13 @@ const styles = StyleSheet.create({
     },
     foi: {
         backgroundColor: '#000'
+    },
+    la1: {
+        padding: 5,
+        textAlign: "center",
+        fontSize: 21,
+        color: 'white',
+        backgroundColor: '#DB0909'
     },
     sair: {
         margin: 10,
