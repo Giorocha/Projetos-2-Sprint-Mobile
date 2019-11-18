@@ -66,36 +66,38 @@ export default class SignIn extends Component {
                         source={require('../assets/img/opflix.nome.png')}
                     />
                 </View>
+                <View style={styles.border}>
 
-                <View>
-                    <Text style={styles.login}>Login</Text>
-                </View>
+                    <View>
+                        <Text style={styles.login}>Login</Text>
+                    </View>
 
-                <View style={styles.inputs}>
+                    <View style={styles.inputs}>
 
-                    <TextInput
-                        style={styles.nome}
-                        placeholder="email"
-                        onChangeText={email => this.setState({ email })}
-                        value={this.state.email}
-                    />
+                        <TextInput
+                            style={styles.nome}
+                            placeholder="Email"
+                            onChangeText={email => this.setState({ email })}
+                            value={this.state.email}
+                        />
 
-                    <TextInput
-                        style={styles.nome}
-                        placeholder="senha"
-                        onChangeText={senha => this.setState({ senha })}
-                        value={this.state.senha}
-                    />
-                </View>
-                
+                        <TextInput
+                            style={styles.nome}
+                            placeholder="Senha"
+                            onChangeText={senha => this.setState({ senha })}
+                            value={this.state.senha}
+                        />
+                    </View>
+
                     <TouchableOpacity onPress={this._realizarLogin}>
                         <Text style={styles.logar}>Efetuar Login</Text>
                     </TouchableOpacity>
 
-                <View>
-                    <TouchableOpacity onPress={this._irCadastro}>
-                        <Text style={styles.cadastro}>Cadastrar-se</Text>
-                    </TouchableOpacity>
+                    <View>
+                        <TouchableOpacity onPress={this._irCadastro}>
+                            <Text style={styles.cadastro}>Cadastrar-se</Text>
+                        </TouchableOpacity>
+                    </View>
                 </View>
             </View>
         );
@@ -108,11 +110,15 @@ const styles = StyleSheet.create({
         fontSize: 15,
         marginLeft: 9.5,
     },
+    border: {
+        marginTop: 45,
+    },
     oi: {
         backgroundColor: '#000'
     },
     logar: {
         margin: 10,
+        marginTop: 10,
         textAlign: "center",
         fontSize: 15,
         padding: 9,
@@ -122,9 +128,9 @@ const styles = StyleSheet.create({
     },
     login: {
         textAlign: "center",
-        fontSize: 20,
+        fontSize: 25,
         margin: 30,
-        
+
     },
     nome: {
         fontSize: 15,

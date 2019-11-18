@@ -63,10 +63,10 @@ export default class Cadastro extends Component {
                         source={require('../assets/img/opflix.nome.png')}
                     />
                 </View>
+                <View style={styles.inputs}>
                 <View>
                     <Text style={styles.cad}>Cadastrar</Text>
                 </View>
-                <View style={styles.inputs}>
 
                     <View style={styles.input}>
                         <TextInput
@@ -102,7 +102,7 @@ export default class Cadastro extends Component {
 
                 <View>
                     <TouchableOpacity onPress={this._voltar}>
-                        <Text style={styles.voltar}>voltar</Text>
+                        <Text style={styles.voltar}>Voltar</Text>
                     </TouchableOpacity>
                 </View>
             </View>
@@ -129,13 +129,14 @@ const styles = StyleSheet.create({
     },
     cad: {
         textAlign: "center",
-        fontSize: 20,
+        fontSize: 25,
         margin: 30,
     },
     nome: {
         fontSize: 15,
     },
     inputs: {
+        marginTop: 45,
         alignItems: "center",
     },
 })
