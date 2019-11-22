@@ -97,7 +97,7 @@ export default class Main extends Component {
                             )
                         })}
                     </Picker>
-                    <View style={{ height: 1, backgroundColor: '#DB0909', marginBottom: 10, }}></View>
+                    <View style={{ height: 1, backgroundColor: '#DB0909' }}></View>
                 </View>
                 <View>
                     <View>
@@ -108,7 +108,7 @@ export default class Main extends Component {
                             renderItem={({ item }) => (
                                 <View style={styles.tabela}>
                                     <Image
-                                        style={{ width: 150, height: 255, marginLeft: 122, }}
+                                        style={{ width: 300, height: 400, marginLeft: 47, }}
                                         source={{ uri: item.imagem }}
                                     />
                                     <Text style={styles.titulo}>{item.titulo}</Text>
@@ -123,7 +123,7 @@ export default class Main extends Component {
                                 renderItem={({ item }) => (
                                     <View style={styles.tabela}>
                                         <Image
-                                            style={{ width: 150, height: 255, marginLeft: 122, }}
+                                            style={{ width: 300, height: 400, marginLeft: 47, }}
                                             source={{ uri: item.imagem }}
                                         />
                                         <Text style={styles.titulo}>{item.titulo}</Text>
@@ -140,7 +140,7 @@ export default class Main extends Component {
 
 const styles = StyleSheet.create({
     tudo: {
-        height: '68%'
+        height: '70%'
     },
     ver: {
         backgroundColor: '#DB0909',
