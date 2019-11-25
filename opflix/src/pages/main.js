@@ -108,7 +108,7 @@ export default class Main extends Component {
                             renderItem={({ item }) => (
                                 <View style={styles.tabela}>
                                     <Image
-                                        style={{ width: 300, height: 400, marginLeft: 47, }}
+                                        style={{ width: 300, height: 430, marginLeft: 47, }}
                                         source={{ uri: item.imagem }}
                                     />
                                     <Text style={styles.titulo}>{item.titulo}</Text>
@@ -123,7 +123,7 @@ export default class Main extends Component {
                                 renderItem={({ item }) => (
                                     <View style={styles.tabela}>
                                         <Image
-                                            style={{ width: 300, height: 400, marginLeft: 47, }}
+                                            style={{ width: 300, height: 430, marginLeft: 47, }}
                                             source={{ uri: item.imagem }}
                                         />
                                         <Text style={styles.titulo}>{item.titulo}</Text>
